@@ -1,0 +1,20 @@
+
+(defwidget _buttons [shutdown shutdown_icon reboot reboot_icon logout logout_icon]
+  (box :class "btns-box" :spacing 5
+       :vexpand true :hexpand true
+       :valign "end" :halign "end"
+       :space-evenly false
+    (button :onclick shutdown shutdown_icon)
+    (button :onclick reboot reboot_icon)
+    (button :onclick logout logout_icon)))
+
+(defwidget layout []
+  (_buttons :shutdown "sudo poweroff" :shutdown_icon ""
+            :reboot "sudo reboot" :reboot_icon ""
+	    :logout "pkill -u $(whoami)" :logout_icon ""))
+
+(defwindow menu
+  :stacking "fg"
+  :windowtype "normal"
+  :wm-ignore true
+  (layout))
