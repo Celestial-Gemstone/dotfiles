@@ -58,7 +58,7 @@ myKeys conf = M.unions $ (M.fromList numKeys) : all
         otherKeys = [
 	    ("M-w", kill),
 	    ("<Print>", spawn "~/Applets/bin/screenshot.sh"),
-	    ("M-l", spawn "sudo ~/.config/rofi/powermenu/type-2/powermenu.sh")
+	    ("M-l", spawn "~/.config/rofi/powermenu/type-2/powermenu.sh")
 	    ]
 	
         layoutKeys = [
@@ -81,13 +81,12 @@ myKeys conf = M.unions $ (M.fromList numKeys) : all
 	    ]
 
         
-        navigationKeys = [
-	   ("M-<L>", sendMessage $ Go L),
-	   ("M-<R>", sendMessage $ Go R),
-	   ("M-<U>", sendMessage $ Go U),
-	   ("M-<D>", sendMessage $ Go D),
-           ("M-m", windows W.focusMaster)
-           ]
+        navigationKeys = map (\(c, d) -> (c, sendMessage $ Go d)) [
+	   ("M-<L>", L),
+	   ("M-<R>", R),
+	   ("M-<U>", U),
+	   ("M-<D>", D)
+           ] ++ [("M-m", windows W.focusMaster)]
     
 
         numKeys = [((m .|. (modMask conf), k), windows $ f i)
