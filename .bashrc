@@ -24,7 +24,7 @@ alias clear='clear; startScript'
 alias config='/usr/bin/git --git-dir=/home/jade/.dotfilecfg/ --work-tree=/home/jade'
 
 
-PS1='\e[32m(\u \A \w) λx. \e[34m'
+PS1='\e[32mλ> \e[34m'
 PS0='\e[m'
 
 # greeting
