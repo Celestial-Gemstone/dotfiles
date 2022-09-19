@@ -14,7 +14,7 @@ alias la='ls -lAh'
 alias ll='ls -lh'
 alias tree='tree -C'
 
-alias df='df -h'
+alias df='df -H'
 
 alias heat='watch -d sensors'
 alias sysup='sudo pacman -Syu; paru -Syu;echo -e "\nremember to manually recompile xmonad"'
