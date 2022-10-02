@@ -1,25 +1,17 @@
-/**
- *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- * 
- * Rofi Theme File
- * Rofi Version: 1.7.3
- **/
-
-/*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun";
+    modi:                       "drun";
     show-icons:                 true;
     display-drun:               "";
-	drun-display-format:        "{name}";
+    drun-display-format:        "{name}";
 }
 
-/*****----- Global Properties -----*****/
-@import                          "shared/colors.rasi"
-@import                          "shared/fonts.rasi"
+@import "shared/colors.rasi"
+@import "shared/fonts.rasi"
 
-/*****----- Main Window -----*****/
+* {
+    font: "Jetbrains Mono 12";
+}
+
 window {
     transparency:                "real";
     location:                    center;
@@ -39,7 +31,6 @@ window {
     cursor:                      "default";
 }
 
-/*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
     spacing:                     10px;
@@ -52,7 +43,6 @@ mainbox {
     children:                    [ "inputbar", "listview" ];
 }
 
-/*****----- Inputbar -----*****/
 inputbar {
     enabled:                     true;
     spacing:                     10px;
@@ -87,7 +77,6 @@ entry {
     placeholder-color:           inherit;
 }
 
-/*****----- Listview -----*****/
 listview {
     enabled:                     true;
     columns:                     2;

@@ -1,29 +1,29 @@
 Config { overrideRedirect = False
-       , font     = "xft:Jetbrains Mono"
-       , bgColor  = "#202540"
-       , fgColor  = "#ccddff"
+       , font     = "xft:Jetbrains Mono Nerd Font"
+       , bgColor  = "#03020a"
+       , fgColor  = "#dddddd"
        , position = TopW C 100
        , commands = [Run Cpu
                         [ "-L", "3"
                         , "-H", "10"
                         , "--high"  , "red"
                         , "--normal", "green"
+			, "--template", " <total>%"
+			, "-m", "2"
                         ] 10
-		    -- volume todo
-                    -- , Run Volume "default" "Master" [] 10
-                    , Run Memory ["--template", "Mem: <usedratio>%"] 10
-                    , Run Swap [] 10
+                    , Run Memory 
+		        [ "--template", " <usedratio>%"
+			, "-m", "2"
+			] 10
+                    , Run Swap 
+		        [ "--template", "<usedratio>%"
+			] 10
                     , Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
                     , Run XMonadLog
 		    , Run Com "/home/jade/.xmobar_scripts/volume" [] "vol" 10
-		    , Run Battery [
-                    "-t", "<acstatus>: <left>%",
-	            "--",
-	            "-o", "Charge"
-		    ] 25
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = " %XMonadLog% }{ %battery% | Vol: %vol% | %cpu% | %memory% * %swap% | %date% "
+       , template = " %XMonadLog% }{ ﰝ %vol% | %cpu% | %memory% * %swap% | %date% "
        }
 

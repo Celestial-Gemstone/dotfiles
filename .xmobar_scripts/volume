@@ -1,0 +1,3 @@
+#!/bin/bash
+
+awk -F"/" '{ gsub(/ /, ""); print $2 }' <(pactl get-sink-volume @DEFAULT_SINK@)

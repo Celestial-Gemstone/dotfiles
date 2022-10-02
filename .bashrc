@@ -45,8 +45,10 @@ startScript () {
   echo -e "\e[35m\e[1m($(lCalculus))\e[m\n\n"
 }
 
-[ -f "/home/jade/.ghcup/env" ] && source "/home/jade/.ghcup/env" # ghcup-env
+#[ -f "/home/jade/.ghcup/env" ] && source "/home/jade/.ghcup/env" # ghcup-env
 
 export GTK_THEME=Adwaita:dark
 
 startScript
+
+[ -f "/home/jade/.ghcup/env" ] && source "/home/jade/.ghcup/env" # ghcup-env

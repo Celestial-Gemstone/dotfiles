@@ -142,7 +142,7 @@ myManageHook = composeAll
 myEventHook = swallowEventHook (className =? "Alacritty") (return True)
 
 myStartupHook = do
-    spawnOnce "~/.screenlayout/laptopLeft.sh"
+    --spawnOnce "~/.screenlayout/laptopLeft.sh"
     spawnOnce "picom --experimental-backends"
     spawnOnce "dunst"
     spawnOnce "~/.fehbg" 
@@ -152,7 +152,7 @@ myStartupHook = do
 main :: IO ()
 main = do
   xm1 <- spawnPipe "xmobar -x 0"
-  xm2 <- spawnPipe "xmobar -x 1"
+  --xm2 <- spawnPipe "xmobar -x 1"
   xmonad . xmobarProp $ mconfig
 
 mconfig = def {
