@@ -1,0 +1,5 @@
+#!/bin/bash
+
+heat=$(awk '/Package id 0/{getline; print substr($2, 1, 2)}' <(sensors -u))
+echo "$heat°C"
+
