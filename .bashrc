@@ -51,4 +51,4 @@ export GTK_THEME=Adwaita:dark
 
 startScript
 
-[ -f "/home/jade/.ghcup/env" ] && source "/home/jade/.ghcup/env" # ghcup-env
+[ -f "/home/jade/.ghcup/env" ] && source "/home/jade/.ghcup/env" # ghcup-envexport PATH=$PATH:/home/jade/.spicetify

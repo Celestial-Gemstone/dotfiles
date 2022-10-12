@@ -6,10 +6,10 @@ env:
 
 window:
   padding:
-     x: 5
-     y: 5
+     x: 15
+     y: 15
   #dynamic_padding: false
-  opacity: 0.6
+  opacity: 0.9
   title: Alacritty
   dynamic_title: true
 
@@ -44,7 +44,7 @@ font:
 colors:
   # Default colors
   primary:
-    background: '0x254055'
+    background: '0x232530'
     foreground: '0xccccdd'
 
     bright_foreground: '0xe6efff'

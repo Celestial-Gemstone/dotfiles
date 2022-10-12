@@ -32,7 +32,7 @@ myBorderWidth        = 0
 
 myModMask            = mod4Mask
 
-myWorkspaces         = ["dev", "web", "discord", "music", "misc", "parking"]
+myWorkspaces         = ["dev", "web", "discord", "music", "games", "misc", "parking"]
 
 myNormalBorderColor  = "#ffffff"
 myFocusedBorderColor = "#308fc0"
@@ -41,52 +41,32 @@ myFocusedBorderColor = "#308fc0"
 -- key bindings
 myKeys conf = M.unions $ (M.fromList numKeys) : all 
     where
-        all = map (\k -> mkKeymap conf k) [
-            otherKeys,
-	    layoutKeys,
-	    spawnApplicationKeys,
-	    navigationKeys,
-            metaControl,
-	    volKeys
-	    ]
+        all = mkKeymap conf keys
        
-        volKeys = [ ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +3%")
-	          , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -3%")
-                  , ( "<XF86AudioMute>"      , spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
-	          ]
-
-        otherKeys = [
-	    ("M-w", kill),
-	    ("<Print>", spawn "~/Applets/bin/screenshot.sh"),
-	    ("M-l", spawn "~/.config/rofi/powermenu/type-2/powermenu.sh")
-	    ]
-	
-        layoutKeys = [
-	    ("M-f", sendMessage NextLayout),
-            ("M-S-k", setLayout $ XMonad.layoutHook conf),
-            ("M-n", refresh),
- 
-            ("M-S-m", windows W.swapMaster),
-    
-            ("M-S-<L>", sendMessage Shrink),
-            ("M-S-<R>", sendMessage Expand),
-   
-            ("M-p", sendMessage NextLayout), 
-            ("M-t", withFocused $ windows . W.sink)
-            ]
-
-        spawnApplicationKeys = [
-            ("M-<Return>", spawn $ XMonad.terminal conf),
-            ("M-<Space>", spawn "~/.config/rofi/launchers/type-1/launcher.sh")
-	    ]
-
-        
-        navigationKeys = map (\(c, d) -> (c, sendMessage $ Go d)) [
+        keys = 
+	  [ ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +3%")
+          , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -3%")
+          , ( "<XF86AudioMute>"      , spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
+          , ("M-w", kill)
+	  , ("<Print>", spawn "flameshot gui")
+	  , ("M-l", spawn "~/.config/rofi/powermenu/type-2/powermenu.sh")
+	  , ("M-f", sendMessage NextLayout)
+	  , ("M-S-k", setLayout $ XMonad.layoutHook conf)
+	  , ("M-n", refresh)
+	  , ("M-S-m", windows W.swapMaster)
+	  , ("M-S-<L>", sendMessage Shrink)
+	  , ("M-S-<R>", sendMessage Expand)
+	  , ("M-p", sendMessage NextLayout)
+	  , ("M-t", withFocused $ windows . W.sink)
+	  , ("M-<Return>", spawn $ XMonad.terminal conf)
+	  , ("M-<Space>", spawn "~/.config/rofi/launchers/type-1/launcher.sh")
+          , ("M-m", windows W.focusMaster)
+	   ] ++ map (\(c, d) -> (c, sendMessage $ Go d)) [
 	   ("M-<L>", L),
 	   ("M-<R>", R),
 	   ("M-<U>", U),
 	   ("M-<D>", D)
-           ] ++ [("M-m", windows W.focusMaster)]
+           ]
     
 
         numKeys = [((m .|. (modMask conf), k), windows $ f i)
@@ -121,7 +101,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
 
 -- layouts
-myLayout = (spacingWithEdge 10 $ tiled ||| gridWithMaster) ||| full
+myLayout = (spacingWithEdge 5 $ tiled ||| gridWithMaster) ||| full
   where
      incr = 1/10
      ratio = 6/10

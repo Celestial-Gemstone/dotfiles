@@ -37,4 +37,4 @@ export AWT_TOOLKIT=MToolkit
 
 
 setxkbmap -layout de &
-exec xmonad
+exec qtile start

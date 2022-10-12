@@ -9,4 +9,5 @@
 export PATH="$PATH:/home/jade/.local/share/JetBrains/Toolbox/scripts"
 
 
-exec startx
+# exec startx
+export PATH=$PATH:/home/jade/.spicetify
